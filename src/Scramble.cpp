@@ -18,7 +18,7 @@ void Scramble::scrambleWords()
         int len = word.size();
         int wordlen = 0;
         bool spec = false;
-        if (spec = (word[len - 1] == '.' || word[len - 1] == '?' || word[len - 1] == '!'))
+        if (spec = (word[len - 1] == '.' || word[len - 1] == '?' || word[len - 1] == '!' || word[len-1] == ','))
             wordlen = len - 1;
         else
             wordlen = len;
@@ -45,6 +45,15 @@ void Scramble::fillOutput()
     }
 
     out = o_stream.str();
+}
+
+std::string Scramble::scramble(std::string in)
+{
+	processInput(in);
+    s.scrambleWords();
+    s.fillOutput();
+	
+	return s.getOutput();
 }
 
 int main(int argc, const char** argv[])
