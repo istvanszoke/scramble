@@ -13,7 +13,7 @@ public:
     void processInput(const std::string& in);
     void scrambleWords();
     void fillOutput();
-	void clear() { words.clear(); }
+    void clear() { words.clear(); }
     std::string scramble(std::string);
     std::string getOutput(){ return out; }
     std::vector<std::string> getWords() { return words; }

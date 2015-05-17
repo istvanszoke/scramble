@@ -2,7 +2,7 @@
 
 #include <cxxtest/TestSuite.h>
 
-#include <../src/Scramble.h>
+#include <../source/Scramble.h>
 
 class ScrambleTest : public CxxTest::TestSuite
 {
