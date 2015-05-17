@@ -1,9 +1,9 @@
 #include "Scramble.h"
 
 
-void Scramble::processInput(std::string in)
+void Scramble::processInput(const std::string& in)
 {
-    std::istringstream stream = std::istringstream(in);
+    std::istringstream stream(in);
     std::string temp;
     while (stream >> temp)
     {
@@ -17,8 +17,8 @@ void Scramble::scrambleWords()
     {
         int len = word.size();
         int wordlen = 0;
-        bool spec = false;
-        if (spec = (word[len - 1] == '.' || word[len - 1] == '?' || word[len - 1] == '!' || word[len - 1] == ','))
+        bool spec = (word[len - 1] == '.' || word[len - 1] == '?' || word[len - 1] == '!' || word[len - 1] == ',');
+        if (spec)
             wordlen = len - 1;
         else
             wordlen = len;
@@ -36,12 +36,13 @@ void Scramble::scrambleWords()
 
 void Scramble::fillOutput()
 {
-    std::ostringstream o_stream = std::ostringstream();
+    std::ostringstream o_stream;
 
-    for (auto word : words)
+    for (auto &word : words)
     {
         o_stream << word;
-        o_stream.put(' ');
+		if (word != words.back())
+	        o_stream.put(' ');
     }
 
     out = o_stream.str();
@@ -56,16 +57,5 @@ std::string Scramble::scramble(std::string in)
     return getOutput();
 }
 
-int main(int argc, const char** argv[])
-{
-    Scramble s = Scramble();
 
-    s.processInput("Scramble these words!");
-    s.scrambleWords();
-    s.fillOutput();
-
-    std::cout << s.getOutput() << std::endl;
-    int a;
-    std::cin >> a;
-}
 

@@ -10,9 +10,10 @@ class Scramble
 
 public:
     Scramble() : words(std::vector<std::string>()), out("") {}
-    void processInput(std::string in);
+    void processInput(const std::string& in);
     void scrambleWords();
     void fillOutput();
+	void clear() { words.clear(); }
     std::string scramble(std::string);
     std::string getOutput(){ return out; }
     std::vector<std::string> getWords() { return words; }

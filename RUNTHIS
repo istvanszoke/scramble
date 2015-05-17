@@ -1,0 +1,4 @@
+make clean
+make -B
+cd test
+./ScrambleTest
